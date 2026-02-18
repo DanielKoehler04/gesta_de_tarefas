@@ -7,11 +7,13 @@ function App() {
     {
       id: 1,
       title: "Estudar",
+      description: "Estudar muit pra ganhar dinheiro",
       isCompleted: false,
     },
     {
       id: 2,
       title: "Trabalhar",
+      description: "Trabalhar muito pra ganhar dinheiro",
       isCompleted: false,
     },
   ]);
@@ -35,13 +37,24 @@ function App() {
     setTask(newTasks);
   }
 
+  function onAddTaskClick(title, description) {
+    const newTask = {
+      id: tasks_list.length + 1,
+      title: title,
+      description: description,
+      isCompleted: false,
+    };
+
+    setTask([...tasks_list, newTask]);
+  }
+
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center">
       <div className="w-125 flex flex-col gap-3">
         <h1 className="text-2xl text-slate-100 font-bold text-center m-5">
           Gerenciador de Tarefas
         </h1>
-        <AddTask />
+        <AddTask onAddTaskClick={onAddTaskClick} />
         <Tasks
           task={tasks_list}
           onTaskClick={onTaskClick}
