@@ -26,7 +26,7 @@ function AddTask(props) {
       <button
         onClick={() => {
           if (!title.trim() || !description.trim()) {
-            const alerts = ["Os campos não podem estar em branco", "aa"];
+            const alerts = ["Os campos não podem estar em branco", "AA"];
             setAlert(alerts);
             return;
           }
@@ -39,7 +39,13 @@ function AddTask(props) {
       >
         Adicionar
       </button>
-      <p className="text-red500">{alert}</p>
+      <ul>
+        {alert.map((element, index) => (
+          <p className="text-red-400 font-bold" key={index}>
+            {element}
+          </p>
+        ))}
+      </ul>
     </div>
   );
 }

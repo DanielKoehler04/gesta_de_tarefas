@@ -1,6 +1,7 @@
 import { useState } from "react";
 import AddTask from "./Components/AddTask";
 import Tasks from "./Components/Task";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [tasks_list, setTask] = useState([
@@ -39,7 +40,7 @@ function App() {
 
   function onAddTaskClick(title, description) {
     const newTask = {
-      id: tasks_list.length + 1,
+      id: uuidv4(),
       title: title,
       description: description,
       isCompleted: false,
