@@ -1,7 +1,7 @@
 import { SettingsIcon } from "lucide-react";
 import { useState } from "react";
 
-function AddTask(props) {
+function AddTask(onAddTaskClick) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [alert, setAlert] = useState([]);
@@ -26,12 +26,12 @@ function AddTask(props) {
       <button
         onClick={() => {
           if (!title.trim() || !description.trim()) {
-            const alerts = ["Os campos não podem estar em branco", "AA"];
+            const alerts = ["Os campos não podem estar em branco"];
             setAlert(alerts);
             return;
           }
 
-          props.onAddTaskClick(title, description);
+          onAddTaskClick(title, description);
           setTitle("");
           setDescription("");
         }}
